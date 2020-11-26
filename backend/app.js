@@ -12,6 +12,20 @@ app.use(bodyParser.json());
 
 app.use('/form', formRoutes);
 
+formRoutes.route('/').get(function(req, res) {
+    mongooseSchema.find(err, form) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.json(form)
+        }
+    }
+})
+
+formRoutes.route('/:id').get(function(req, res) {
+    let id = req.params.id;
+    console.log(id);
+})
 mongoose.connect('mongodb://127.0.0.1:27017/form', {
     useNewUrlParser: true
 });
